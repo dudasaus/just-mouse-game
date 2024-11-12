@@ -28,3 +28,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 max_value = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

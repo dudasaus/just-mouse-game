@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5rbacq0rrp21"]
+[gd_scene load_steps=6 format=3 uid="uid://c5rbacq0rrp21"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_mttf5"]
 [ext_resource type="Texture2D" uid="uid://jk7eqe3ogtuf" path="res://icon.svg" id="2_dxt3n"]
 [ext_resource type="PackedScene" uid="uid://owcplltll86y" path="res://scenes/game_ui.tscn" id="3_0dwme"]
+[ext_resource type="PackedScene" uid="uid://c5n72qa6ahw03" path="res://Maps/Monza/Monza.tscn" id="3_lajqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chi12"]
 size = Vector2(124, 123)
@@ -10,7 +11,7 @@ size = Vector2(124, 123)
 [node name="Level" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(604, 320)
+position = Vector2(18825, 10038)
 script = ExtResource("1_mttf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
@@ -24,4 +25,17 @@ shape = SubResource("RectangleShape2D_chi12")
 
 [node name="GameUI" parent="CharacterBody2D/Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("3_0dwme")]
 custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -239.0
+offset_top = -283.0
+offset_right = 261.0
+offset_bottom = 217.0
+grow_horizontal = 1
+grow_vertical = 1
 player = NodePath("../..")
+
+[node name="Map" parent="." instance=ExtResource("3_lajqn")]
+position = Vector2(-345, -431)
+scale = Vector2(15, 15)
