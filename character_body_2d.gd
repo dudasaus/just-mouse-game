@@ -7,8 +7,8 @@ var rotate_friction = 3.0
 var max_rotational_speed = 15.0
 
 var shoot_force: float = 0.0
-var shoot_force_change = 15.0
-var max_shoot_force = 1500.0
+var shoot_force_change = 45.0
+var max_shoot_force = 3000.0
 var min_shoot_force = 0.0
 # seconds to adjust shoot force
 var shoot_time_seconds = 1.5
@@ -28,28 +28,31 @@ enum Mode {
 var mode = Mode.ROTATING
 
 func _physics_process(delta: float) -> void:
-	if mode == Mode.ROTATING:
-		if not Input.is_action_just_pressed("shoot_more"):
-			rotate_during_frame(delta)
-		else:
-			enter_shoot_mode()
-	elif mode == Mode.SHOOTING:
-		shoot_mode_frame(delta)
-	elif mode == Mode.ACTUALLY_MOVING:
-		actually_moving_mode_frame(delta)
+	rotate_during_frame(delta)
+	shoot_mode_frame(delta)
+	actually_moving_mode_frame(delta)
+	#if mode == Mode.ROTATING:
+		#if not Input.is_action_just_pressed("shoot_more"):
+			#rotate_during_frame(delta)
+		#else:
+			#enter_shoot_mode()
+	#elif mode == Mode.SHOOTING:
+		#shoot_mode_frame(delta)
+	#elif mode == Mode.ACTUALLY_MOVING:
+		#actually_moving_mode_frame(delta)
 
 func rotate_during_frame(delta: float):
 	var frame_rotate_accel = 0.0
 	if Input.is_action_just_pressed("rotate_right"):
 		if rotational_velocity < 0:
 			rotational_velocity = 0
-		else:
-			frame_rotate_accel += rotate_acceleration
+		#else:
+		frame_rotate_accel += rotate_acceleration
 	if Input.is_action_just_pressed("rotate_left"):
 		if rotational_velocity > 0:
 			rotational_velocity = 0
-		else:
-			frame_rotate_accel -= rotate_acceleration
+		#else:
+		frame_rotate_accel -= rotate_acceleration
 	if frame_rotate_accel != 0:
 		rotational_velocity += frame_rotate_accel
 	else:
